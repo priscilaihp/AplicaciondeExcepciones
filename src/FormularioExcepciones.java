@@ -13,7 +13,23 @@ public class FormularioExcepciones {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //System.out.println("Hola " + Nombre.getText());
-                JOptionPane.showMessageDialog(null,"Quiero dividir " + numero1.getText() + " y " + numero2.getText());
+                try
+                {
+                    int num1 = Integer.parseInt(numero1.getText());
+                    int num2 = Integer.parseInt(numero2.getText());
+                    int resultado = num1 / num2;
+
+                    JOptionPane.showMessageDialog(null,/*"Quiero dividir " + numero1.getText() + " y " + numero2.getText()*/
+                            "La división de " + numero1.getText() + " y " + numero2.getText() + " es " + resultado);
+                }
+                catch (ArithmeticException e)
+                {
+                    JOptionPane.showMessageDialog(null, "No puedo dividir por cero");
+                }
+                catch (NumberFormatException e)
+                {
+                    JOptionPane.showMessageDialog(null, "Número inválido");
+                }
             }
         });
     }
